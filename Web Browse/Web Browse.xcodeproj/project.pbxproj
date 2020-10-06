@@ -14,6 +14,7 @@
 		7A2FCB9A252C4DEC005D95F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2FCB99252C4DEC005D95F0 /* Assets.xcassets */; };
 		7A2FCB9D252C4DEC005D95F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2FCB9B252C4DEC005D95F0 /* LaunchScreen.storyboard */; };
 		7A2FCBA6252C51A1005D95F0 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2FCBA5252C51A1005D95F0 /* WebKit.framework */; };
+		7A2FCBA8252C7A90005D95F0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2FCBA7252C7A90005D95F0 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7A2FCB9C252C4DEC005D95F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A2FCB9E252C4DEC005D95F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A2FCBA5252C51A1005D95F0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		7A2FCBA7252C7A90005D95F0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				7A2FCB90252C4DE9005D95F0 /* AppDelegate.swift */,
 				7A2FCB92252C4DE9005D95F0 /* SceneDelegate.swift */,
 				7A2FCB94252C4DE9005D95F0 /* WebViewController.swift */,
+				7A2FCBA7252C7A90005D95F0 /* Extensions.swift */,
 				7A2FCB96252C4DE9005D95F0 /* Main.storyboard */,
 				7A2FCB99252C4DEC005D95F0 /* Assets.xcassets */,
 				7A2FCB9B252C4DEC005D95F0 /* LaunchScreen.storyboard */,
@@ -153,6 +156,7 @@
 				7A2FCB95252C4DE9005D95F0 /* WebViewController.swift in Sources */,
 				7A2FCB91252C4DE9005D95F0 /* AppDelegate.swift in Sources */,
 				7A2FCB93252C4DE9005D95F0 /* SceneDelegate.swift in Sources */,
+				7A2FCBA8252C7A90005D95F0 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

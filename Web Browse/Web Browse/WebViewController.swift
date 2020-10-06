@@ -32,13 +32,14 @@ class WebViewController: UIViewController {
         if UIApplication.shared.canOpenURL(url){
         let request = URLRequest(url: url)
         webView?.load(request)
+        UserDefaults.standard.lastURL = url
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         url = URL(string: "http://www.packtpub.com")
+        url = UserDefaults.standard.lastURL
          toolbarItems = createToolbarItems()
          navigationItem.searchController = searchController
          searchController.searchBar.delegate = self
