@@ -1,12 +1,29 @@
-//
-//  Extensions.swift
-//  Web Browse
-//
-//  Created by Eryk Szcześniak on 06/10/2020.
-//  Copyright © 2020 Eryk Szcześniak. All rights reserved.
-//
+
 
 import UIKit
+
+
+extension UIBarButtonItem {
+    
+    convenience init(fixedSpaceWidth: CGFloat) {
+        self.init(barButtonSystemItem: .fixedSpace, target: nil, action:nil)
+        width = fixedSpaceWidth
+    }
+}
+
+extension UISearchController {
+    convenience init(searchBarDelegate: UISearchBarDelegate) {
+        self.init(searchResultsController: nil)
+
+        dimsBackgroundDuringPresentation = false
+        searchBar.returnKeyType = .go
+        searchBar.enablesReturnKeyAutomatically = true
+        searchBar.keyboardType = .URL
+        searchBar.autocapitalizationType = .none
+        searchBar.delegate = searchBarDelegate
+        searchBar.placeholder = NSLocalizedString("Enter URL", comment: "Search bar prompt")
+    }
+}
 
 extension UserDefaults {
     var lastURL: URL? {
@@ -18,4 +35,3 @@ extension UserDefaults {
         }
     }
 }
-

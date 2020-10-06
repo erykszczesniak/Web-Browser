@@ -15,7 +15,7 @@ class WebViewController: UIViewController {
     
         lazy var shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.share(sender:)))
 
-    lazy var searchController = UISearchController(searchResultsController: nil)
+    lazy var searchController = UISearchController(searchBarDelegate: self)
     
     var url: URL? {
         get {
@@ -40,19 +40,35 @@ class WebViewController: UIViewController {
         super.viewDidLoad()
         
         url = UserDefaults.standard.lastURL
-         toolbarItems = createToolbarItems()
-         navigationItem.searchController = searchController
-         searchController.searchBar.delegate = self
-        
+        toolbarItems = createToolbarItems()
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        backButton.isEnabled = false
+        forwardButton.isEnabled = false
+        webView?.navigationDelegate = self
         
     }
     
     
     func createToolbarItems() -> [UIBarButtonItem] {
-        return [backButton, forwardButton, shareButton]
+        return [backButton,
+                forwardButton,
+                UIBarButtonItem(fixedSpaceWidth: 22),
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                shareButton]
     }
 
 
+}
+
+extension WebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        if let url = url {
+            title = url.host
+            backButton.isEnabled = webView.canGoBack
+            forwardButton.isEnabled = webView.canGoForward
+        }
+    }
 }
 
 extension WebViewController {
