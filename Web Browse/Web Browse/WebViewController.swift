@@ -67,9 +67,17 @@ extension WebViewController: WKNavigationDelegate {
             title = url.host
             backButton.isEnabled = webView.canGoBack
             forwardButton.isEnabled = webView.canGoForward
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
         }
     }
+
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }
+
 
 extension WebViewController {
    @objc func share(sender: UIBarButtonItem) {
