@@ -13,6 +13,8 @@ class WebViewController: UIViewController {
     
     lazy var forwardButton = UIBarButtonItem(barButtonSystemItem: .fastForward, target: webView, action: #selector(WKWebView.goForward))
     
+        lazy var shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.share(sender:)))
+
     lazy var searchController = UISearchController(searchResultsController: nil)
     
     var url: URL? {
@@ -27,28 +29,47 @@ class WebViewController: UIViewController {
     }
     
     func load(url: URL) {
+        if UIApplication.shared.canOpenURL(url){
         let request = URLRequest(url: url)
         webView?.load(request)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = URL(string: "http://www.packtpub.com") {
-            let request = URLRequest(url: url)
-            webView?.load(request)
-        }
+         url = URL(string: "http://www.packtpub.com")
+         toolbarItems = createToolbarItems()
+         navigationItem.searchController = searchController
+         searchController.searchBar.delegate = self
         
-        toolbarItems = createToolbarItems()
-        navigationItem.searchController = searchController
         
     }
     
     
     func createToolbarItems() -> [UIBarButtonItem] {
-        return [backButton, forwardButton]
+        return [backButton, forwardButton, shareButton]
     }
 
 
 }
 
+extension WebViewController {
+   @objc func share(sender: UIBarButtonItem) {
+    if let url = url {
+        let sheet = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+    present(sheet, animated: true, completion: nil)
+    }
+    
+        
+    }
+}
+
+extension WebViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text, let url = URL(string: text) {
+            self.url = url
+        }
+    }
+}
